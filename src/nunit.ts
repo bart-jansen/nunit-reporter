@@ -127,7 +127,7 @@ export async function parseNunit(nunitReport: string): Promise<TestResult> {
     explicitArray: false
   })
 
-  const testRun = nunitResults['test-run']
+  const testRun = nunitResults['test-run'] || nunitResults['test-results']
 
   const testCases = getTestCases(testRun)
   const failedCases = testCases.filter(tc => tc.result === 'Failed')
